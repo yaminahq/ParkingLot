@@ -1,0 +1,96 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Results</title>
+    <link href="websitestyle.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,500,700,900" rel="stylesheet" />
+    <script type="text/javascript" src="myscript.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <!-- wrapper used to center everything on the page-->
+    <div id="wrapper">
+
+        <!-- Header contains webiste title and sidebar toggle -->
+        <div id="header">
+
+            <a href="#" id="website-title">Parking lot</a>
+
+            <!-- default checkbox is used to create custom toggle button -->
+            <div id="sidebar">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <!-- The navigation menu contained in the sidebar -->
+                <ul id="menu">
+                    <li><a href="#" class="menu-category">Home</a></li>
+                    <li><a href="search.html" class="menu-category">Search</a></li>
+                    <li><a href="submission.html" class="menu-category">Submission</a></li>
+                    <li><a href="register.html" class="menu-category">Register</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content contains a map and a table of results -->
+        <div id="content">
+            <!-- contains an embeded live map -->
+            <div id="results-map">
+                <!-- retrieves and creates a map using the Google Maps API and the function myResultsMap() defined in myscript.js-->
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD84ArCO3HWekkCN7ul18FBJDTIgu3MVNg&callback=myResultsMap"></script>
+            </div>
+            <div id="results">
+                <table>
+                    <!-- table column headings -->
+                    <tr>
+                        <th>Address</th>
+                        <th>Price</th>
+                        <th>Distance</th>
+                        <th>Rating</th>
+                    </tr>
+
+                    <!-- table data -->
+                    <tr>
+                        <td><a href="parking.html" class="results-option">123 Khan Crescent, Mississauaga</a></td>
+                        <td>$5.00/hour</td>
+                        <td>3.9 km</td>
+                        <td>1.3/5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="parking.html" class="results-option">789 Pretend Street, Hamilton</a></td>
+                        <td>$5.50/hour</td>
+                        <td>41.2 km</td>
+                        <td>4.9/5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="parking.html" class="results-option">1042 York Court, Toronto</a></td>
+                        <td>$7.25/hour</td>
+                        <td>29.0 km</td>
+                        <td>3.2/5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="parking.html" class="results-option">231 Lake Crescent, North York</a></td>
+                        <td>$7.30/hour</td>
+                        <td>35.0 km</td>
+                        <td>2.2/5</td>
+                    </tr>
+                    <tr>
+                        <td><a href="parking.html" class="results-option">519 Mississauga Road, Mississauga</a></td>
+                        <td>$7.85/hour</td>
+                        <td>9.0 km</td>
+                        <td>4.8/5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- footer contains links to more information about the site -->
+        <div id="footer">
+            <a href="#" class="footer-category">About</a>
+            <a href="#" class="footer-category">Sitemap</a>
+        </div>
+    </div>
+</body>

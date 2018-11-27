@@ -1,0 +1,94 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Submission</title>
+    <link href="websitestyle.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,500,700,900" rel="stylesheet" />
+    <script type="text/javascript" src="myscript.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <!-- wrapper used to center everything on the page-->
+    <div id="wrapper">
+
+        <!-- Header contains webiste title and sidebar toggle -->
+        <div id="header">
+
+            <a href="#" id="website-title">Parking lot</a>
+
+            <!-- default checkbox is used to create custom toggle button -->
+            <div id="sidebar">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <!-- The navigation menu contained in the sidebar -->
+                <ul id="menu">
+                    <li><a href="#" class="menu-category">Home</a></li>
+                    <li><a href="search.html" class="menu-category">Search</a></li>
+                    <li><a href="submission.html" class="menu-category">Submission</a></li>
+                    <li><a href="register.html" class="menu-category">Register</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content contains a background image and an overlay -->
+        <div id="content">
+            <img src="images/background4_overlay.png" alt="A parking lot" class="background">
+
+            <!-- overlay contains titular text and a form -->
+            <div id="overlay-sub">
+                <div id="overlay-text-sub">Create a<br> Parking Spot.</div>
+
+                <!-- form contains a section for text fields and a section for image upload -->
+                <div id="form-sub">
+                    <!-- form uses html5 and css for form validation -->
+                    <form id="submission" onsubmit="return validateSubmission(this);">
+                        <div id="fields-sub">
+                            <!-- name input must be 5 characters long and cannot begin with a space or have consecutive spaces.  -->
+                            <div>
+                                <input type="text" name="name" placeholder="Name" class="form-entry" title="Must be 5 characters long and cannot begin with a space or have consecutive spaces." pattern="^\S(?!.*\s{2}).{5,}$" required>
+                            </div>
+                            <!-- description input can only contain a maximum of 300 characters, is optional otherwise -->
+                            <div>
+                                <input type="text" name="description" placeholder="Description" class="form-entry" title ="Must be less than 300 characters" pattern="^.{0,300}$">
+                            </div>
+                            <!-- price input can only contain  digits, a single decimal point and upto 2 digits following the decimal point-->
+                            <div>
+                                <input type="text" name="price" placeholder="Price (CAD/Hour)" class="form-entry" title="Must contain only digits, a single decimal point and up to 2 digits following the decimal point" pattern="^\$?\d{1,}(\.\d{1,2})?$" required>
+                            </div>
+                            <!-- Longittude and Lattitude input fields can only contain at least 1 and upto 3 digits optionally followed by a decimal point and any number of digits, may have "+" or "-" at the beggining of the string -->
+                            <div>
+                                <input type="text" name="long1" placeholder="Longitude" id="long" class="form-entry" title="Must contain at least 1 and up to 3 digits optionally followed by a decimal point and any number of digits, may have '+' or '-' at the beginning of the string" pattern="^(\+|-)?\d{1,3}(\.\d*)?$" required>
+                                <input type="text" name="latt1" placeholder="Lattitude" id="latt" class="form-entry" title="Must contain at least 1 and up to 3 digits optionally followed by a decimal point and any number of digits, may have '+' or '-' at the beginning of the string" pattern="^(\+|-)?\d{1,3}(\.\d*)?$"  required>
+                            </div>
+                            <!-- Uses the html5 geolocation api to determine user location by running the function geolocation() defined in myscript.js when a user clicks this button -->
+                            <button type="button" onclick="geolocation()" id="geolocate" class="btn">Use My Location</button>
+                            <input type="submit" value="Create Spot" class="btn">
+                            
+                        </div>
+
+                        <div id="upload-img">
+                            <label id="upload-lbl">Upload an Image</label>
+                            <img id="noimage" src="images/noimage.png" alt="No picture available">
+                            <input type="file" id="spot-img" accept="image/*">
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+
+        <!-- footer contains links to more information about the site -->
+        <div id="footer">
+            <a href="#" class="footer-category">About</a>
+            <a href="#" class="footer-category">Sitemap</a>
+        </div>
+    </div>
+</body>
+

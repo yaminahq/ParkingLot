@@ -1,0 +1,1367 @@
+/*****************  BODY  ******************/
+
+/* Set the defaults of each webpage of the webiste */
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
+
+/***************** WRAPPER ******************/
+
+/* Used to align content of a webpage so that it is 
+centered with respect to the browser window size */
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+/* On tablets and regular screens prevent the contents of a 
+webpage from resizing to less than 1000px */
+@media screen and (min-width: 501px) {
+  #wrapper {
+    width: 1000px;
+    padding-right: 100px;
+  }
+}
+
+/***************** HEADER *****************
+Contains a burger menu to toggle the sidebar and the
+wesite title
+*/
+
+/* Styles the header bar located at the top of each
+webpage uniformly */
+#header {
+  height: 120px;
+  text-align: center;
+  background-color: #ffffff;
+  color: #bbb9b9;
+  margin-top: 50px;
+}
+/* On small screen widths (greater height to width ratios)
+increases the margin of the header so that items in the header 
+are pushed down further from the top of the screen  */
+@media only screen and (max-width: 500px) {
+  #header {
+    margin-top: 65px;
+  }
+}
+
+/* The title of the website displayed at the top of
+each webpage content */
+#website-title {
+  text-align: center;
+  color: #777777;
+  font-weight: 700;
+  transition: all 0.5s ease;
+  width: 210px;
+  text-decoration: none;
+  font-size: 35px;
+}
+/* Reduces the font-size of the title so that it takes
+less horizontal space on smaller widths */
+@media only screen and (max-width: 500px) {
+  #website-title {
+    font-size: 100%;
+  }
+}
+/* When a user hovers over the title it changes color and
+style to indicate that it is clickable, will link to the 
+homepage of the website */
+#website-title:hover {
+  color: tomato;
+  letter-spacing: 1px;
+}
+
+/***************** SIDEBAR *****************
+The sidebar that appears and disappears from the screen by
+clicking the menu button located in the header of a page.
+Contains a navigation menu.
+*/
+
+/* styles the menu button and places it on the top left
+of each webpage */
+#sidebar {
+  display: block;
+  position: fixed;
+  top: 70px;
+  left: 50px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* A checkbox is used to toggle the sidebar. It is overlayed
+ontop of the menu button and made transparent so that the
+menu button is still visible */
+#sidebar input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -18px;
+  left: -4px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+  -webkit-touch-callout: none;
+}
+
+/* 3 horizontal line, span elements are stacked vertically to create 
+the design of the menu button. This creates the look of the classic 
+"burger" menu. When the menu button is clicked they transform into an
+"X" and the sidebar is displayed. When the button is pressed again they
+transform back into the original "burger" formation*/
+#sidebar span {
+  display: block;
+  width: 33px;
+  height: 2px;
+  position: fixed;
+  background: #bbb9b9;
+  border-radius: 0px;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+/* place a span above the middle span */
+#sidebar span:nth-last-child(2) {
+  transform: translate(0px, 8px);
+}
+
+/* place a span below the middle span */
+#sidebar span:nth-last-child(4) {
+  transform: translate(0px, -8px);
+}
+
+/* the spans change color when the menu button is pressed, so that 
+the "X" is a darker shade. */
+#sidebar input:checked ~ span {
+  background: #232323;
+}
+
+/* On menu button click, the top span rotates to create one line in the
+"X" */
+#sidebar input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-135deg);
+}
+
+/* On menu button click, the bottom span rotates to create the
+second line in the "X" */
+#sidebar input:checked ~ span:nth-last-child(4) {
+  transform: rotate(135deg);
+}
+
+/* on menu button click, the middle span fades out to 
+create the "X" look*/
+#sidebar input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: scale(0.2, 0.2) translate(-35px, 0px);
+}
+
+/* Styles the navigation menu, essentially the actual 'sidebar'
+that appears when the menu button is clicked. It initially located off 
+the screen, when the menu button is clicked it appears on the screen.
+Contains links to "Home", "Search", "Submission" and "Register".*/
+#menu {
+  height: 100%;
+  position: fixed;
+  margin: -70px 0 0 -50px;
+  box-sizing: border-box;
+  text-align: left;
+  background: #f3f1f1;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: 10px 8px 16px -9px rgba(0, 0, 0, 0.54);
+  transform-origin: 0% 0%;
+  transform: translateX(-105%); /* move the sidebar out of view of the screen*/
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  width: 250px;
+  padding: 50px;
+  padding-top: 40vh;
+}
+/* On mobile phones and very small screens increases the size of the
+sidebar so that it takes up more of the screen */
+@media only screen and (max-width: 500px) {
+  #menu {
+    width: 75%;
+    padding-left: 80px;
+    padding-top: 250px;
+  }
+}
+
+/* When the menu button is pressed transform is reset so that the
+sidebar is no longer off the screen. */
+#sidebar input:checked ~ #menu {
+  transform: none;
+}
+
+/* Styles the list of links in the sidebar  */
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+@media only screen and (max-width: 500px) {
+  #menu li {
+    padding: 10px 0;
+    font-size: 170%;
+  }
+}
+
+/* Styles the links in each sidebar */
+.menu-category {
+  text-decoration: none;
+  color: #232323;
+  transition: all 0.3s ease;
+}
+
+/* Changes the color/style of the links in the sidebar when a user
+moves the cursor ontop of them to indicate that the links are clickable*/
+.menu-category:hover {
+  color: tomato;
+  letter-spacing: 1px;
+}
+
+/***************** FOOTER *****************
+A common footer is located on each webpage.
+It contains links to further information about the website.
+It is fixed to always appear at the bottom of the viewport
+even as a user scrolls*/
+
+/* Styles the footer to be uniform on any webpage */
+#footer {
+  background-color: rgb(231, 231, 231);
+  text-align: center;
+  margin: 0px;
+  clear: both;
+  height: 40px;
+  padding-top: 20px;
+  width: 100%;
+  position: fixed;
+  bottom: 0%;
+  left: 0;
+}
+/* The footer is made taller for smaller screen widths (greater
+height to width ratios). */
+@media only screen and (max-width: 500px) {
+  #footer {
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    left: 0;
+    bottom: 0%;
+    padding-top: 15px;
+  }
+}
+
+/* Styles the links located in the footer */
+.footer-category {
+  text-decoration: none;
+  color: #464545;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: 300;
+}
+/* The footer is made slightly smaller on small screens */
+@media only screen and (max-width: 500px) {
+  .footer-category {
+    font-size: 90%;
+    padding: 0px 25px;
+  }
+}
+
+/* Changes the color and style of the footer links when a 
+user hovers over them to indicate that the links are clickable. */
+.footer-category:hover {
+  color: tomato;
+  letter-spacing: 0.5px;
+}
+
+/***************** CONTENT *****************
+The following contains styling for elements that are located
+in the content of any webpage*/
+
+/* A common button style is used throughout the website */
+.btn {
+  background-color: rgb(76, 134, 201);
+  color: white;
+  border: none;
+  width: 200px;
+  margin: 8px 0;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 14px 20px;
+  padding-top: 15px;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+ border-radius: 0;
+}
+/* on smaller screens the font of the text written in the button
+is made bigger so that its easier to read and the button itself
+is made smaller in relation to the text size */
+@media only screen and (max-width: 500px) {
+  .btn {
+    font-size: 150%;
+    padding: 20px 0px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* changes the background color of the button when a user hovers over
+it to indicate that it is clickable. */
+.btn:hover {
+  letter-spacing: 1px;
+  font-size: 15px;
+  background-color: rgb(109, 153, 204);
+}
+
+/* Styles the image for pages that use background pictures so 
+that the image is centered in the screen. */
+.background {
+  float: left;
+  overflow: hidden;
+  box-shadow: 14px 13px 38px -15px rgba(0, 0, 0, 0.75);
+}
+/* on smaller screens removes the background picture. */
+@media (max-width: 500px) {
+  .background {
+    display: none;
+  }
+}
+/* Enforces the width and margin settings that apply to bigger 
+screens but not to small screens. */
+@media (min-width: 501px) {
+  .background {
+    width: 1100px;
+    margin-bottom: 100px;
+  }
+}
+
+/* Styles the text inputs that appear on any form to be uniform */
+.form-entry {
+  border: 1px solid #ccc;
+  display: block;
+  box-sizing: border-box;
+  margin: 10px 0;
+  padding: 10px 15px 10px 15px;
+  width: 200px;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+/* on small screens the text in the box is made bigger and the
+padding around the text smaller */
+@media screen and (max-width: 500px) {
+  .form-entry {
+    font-size: 100%;
+    font-weight: 100;
+    margin: 10px 0;
+    padding: 15px 30px;
+  }
+}
+
+/* Styles a particular set of text inputs, that appear inline
+horizontally on big screens to still match the style of the text inputs
+described in .form-entry but to be display next to each other rather than
+above and below*/
+.form-entry-inline {
+  width: 90px;
+  padding: 12px 10px;
+  margin: 0px 13px 15px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 10px;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+/* on small screens these text inputs no longer display inline but
+stack vertically as the the .form-entry class */
+@media only screen and (max-width: 500px) {
+  .form-entry-inline {
+    font-size: 110%;
+    font-weight: 100;
+    margin-bottom: 8px;
+    padding: 15px 30px;
+    width: 200px;
+  }
+}
+
+/* Modifies the size of longittude input elements so that they are half the width of regular input elements */
+#long {
+  width: 100px;
+}
+/* Slightly reduces the padding inside the input field so more text is visible on smaller screens */
+@media only screen and (max-width: 500px) {
+  #long {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Modifies the size of lattitude input elements so that they are half the width of regular input elements */
+#latt {
+  width: 100px;
+}
+/* Slightly reduces the padding inside the input field so more text is visible on smaller screens */
+@media only screen and (max-width: 500px) {
+  #latt {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* For form elements using html5 form validation changes background color if entry is invalid */
+input:invalid {
+  background-color: #f5f5f5;
+}
+
+/***************** REGISTRATION PAGE *****************
+The following contains styling for elements that are
+specific to the registration page of the website*/
+
+/* Styles the container that holds the main content for the 
+registratoin page. This is one background image, titular text and
+a registration form. Its contents are poisitioned absolutely with 
+respect to it */
+@media screen and (min-width: 501px) {
+  #overlay-reg {
+    position: absolute;
+    box-sizing: border-box;
+    margin-left: 460px;
+    margin-top: 60px;
+  }
+}
+
+/* Styles the main titular text that appears on the registration
+page. */
+#overlay-text-reg {
+  color: rgb(56, 56, 56);
+  font-size: 80px;
+  font-weight: 900;
+  position: absolute;
+  text-align: left;
+  text-shadow: 3px 3px 12px rgba(150, 150, 150, 0.65);
+  border-bottom: 2px solid rgb(56, 56, 56);
+}
+/* On small screens moves the text to the top of the
+content and styles it so that it is always centered on the page */
+@media screen and (max-width: 500px) {
+  #overlay-text-reg {
+    text-align: center;
+    top: 150px;
+    width: 60%;
+    text-shadow: none;
+    border-bottom: none;
+    font-size: 40px;
+    padding: 0 20%;
+  }
+}
+/* On big screens anchors the text to the bottom left of the background picture for
+big screen. */
+@media screen and (min-width: 501px) {
+  #overlay-text-reg {
+    width: 450px;
+    top: 260px;
+    left: -380px;
+    padding-bottom: 20px;
+  }
+}
+
+/* Styles the registration form. */
+#form-reg {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 14px 13px 38px -15px rgba(0, 0, 0, 0.75);
+  position: absolute;
+}
+/* on small screens the form is left-aligned */
+@media screen and (max-width: 500px) {
+  #form-reg {
+    text-align: center;
+    top: 300px;
+    padding: 60px 50px 60px 50px;
+    margin-left: 5%;
+    margin-bottom: 150px;
+  }
+}
+/* on big screens the form is located in the top right of the
+contents of the page */
+@media screen and (min-width: 501px) {
+  #form-reg {
+    left: 290px;
+    padding: 50px 40px 50px 40px;
+    max-width: 210px;
+  }
+}
+
+/***************** CHECKBOX *****************
+Styles a custom checkbox to be used across pages of the
+website*/
+
+/* Styles a container for the checkbox. This is the area
+a user can click to trigger the checkbox. It also contains
+the text that is displayed next to the checkbox */
+.checkbox-style {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+/* on smaller screens this is made bigger with respect to screen
+width. */
+@media screen and (max-width: 500px) {
+  .checkbox-style {
+    font-size: 120%;
+    padding-top: 10px;
+    margin: 30px 0px;
+    padding-left: 22px;
+  }
+}
+
+/* styles the checkbox to initially be a light gray square */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  height: 25px;
+  width: 25px;
+}
+/* on smaller screens this is made bigger with respect to screen
+width. */
+@media screen and (max-width: 500px) {
+  .checkmark {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+/* styles the checkmark that is displayed in the checkbox
+when it is selected  */
+.checkbox-style .checkmark:after {
+  top: 5px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  left: 9px;
+}
+@media screen and (max-width: 500px) {
+  /* on smaller screens this is made bigger with respect to screen
+width. */
+  .checkbox-style .checkmark:after {
+    width: 10px;
+    height: 20px;
+    border-width: 0 10px 10px 0;
+    left: 10px;
+    top: 2px;
+  }
+}
+
+/* The default checkbox style is made transparent and layed over the
+custom checkbox */
+.checkbox-style input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* checkbox changes color when a user hovers over it to indicate that it
+is clickable */
+.checkbox-style:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* changes the background color of the checkbox to indicate it is
+selected */
+.checkbox-style input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+/* styles the checkmark */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* displays the checkmark when the checkbox is selected */
+.checkbox-style input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/***************** SUBMISSION PAGE *****************
+The following contains styling for elements that are
+specific to the submission page of the website*/
+
+/* Styles the container that holds the main content for the 
+submission page. This is one background image, titular text and
+a submission form. Its contents are poisitioned absolutely with 
+respect to it */
+@media only screen and (min-width: 501px) {
+  #overlay-sub {
+    position: absolute;
+    box-sizing: border-box;
+    margin-left: 420px;
+    margin-top: 25px;
+  }
+}
+/* A common button style is used throughout the website */
+.btn {
+  background-color: rgb(76, 134, 201);
+  color: white;
+  border: none;
+  width: 200px;
+  margin: 8px 0;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 14px 20px;
+  padding-top: 15px;
+  transition: all 0.3s ease;
+}
+/* on smaller screens the font of the text written in the button
+is made bigger so that its easier to read and the button itself
+is made smaller in relation to the text size */
+@media only screen and (max-width: 500px) {
+  .btn {
+    font-size: 150%;
+    padding: 20px 0px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* changes the background color of the button when a user hovers over
+it to indicate that it is clickable. */
+.btn:hover {
+  letter-spacing: 1px;
+  font-size: 15px;
+  background-color: rgb(109, 153, 204);
+}
+
+/* Styles the button used to activate geolocation on the submission page */
+#geolocate {
+  position: absolute;
+  background-color: rgb(149, 202, 106);
+  width: 90px;
+  padding: 25px 10px;
+  font-size: 12px;
+  top: 188px;
+  right: 40px;
+}
+/* on small screens modifies the location of the button slightly */
+@media only screen and (max-width: 500px) {
+  #geolocate {
+    position: absolute;
+    top: 405px;
+    left: 160px;
+  }
+}
+
+/* changes the background color of the button when a user hovers over
+it to indicate that it is clickable. */
+#geolocate:hover {
+  background-color: rgb(170, 206, 141);
+}
+
+
+/* Styles the main titular text that appears on the submission
+page. */
+#overlay-text-sub {
+  position: absolute;
+  font-size: 80px;
+  font-weight: 900;
+  padding-bottom: 20px;
+  text-align: left;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
+  text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.5);
+  width: 500px;
+  top: 430px;
+  left: -330px;
+}
+/* On small screens moves the text to the top of the
+content and styles it so that it is always centered on the page */
+@media only screen and (max-width: 500px) {
+  #overlay-text-sub {
+    color: rgb(56, 56, 56);
+    text-align: center;
+    top: 150px;
+    width: 70%;
+    left: 0px;
+    text-shadow: none;
+    border-bottom: none;
+    font-size: 40px;
+    padding: 0 15%;
+  }
+}
+/* Styles the submission form. The submission form contains
+text fields for information and a section to upload an image*/
+#form-sub {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 14px 13px 38px -15px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 35px;
+  left: 60px;
+  padding: 50px 40px 50px 20px;
+  width: 500px;
+}
+/* on small screens the form is left-aligned */
+@media only screen and (max-width: 500px) {
+  #form-sub {
+    text-align: center;
+    top: 300px;
+    padding: 200px 50px 60px 50px;
+    margin-left: 8%;
+    margin-bottom: 150px;
+    width: 200px;
+    left: 0px;
+  }
+}
+/* on big screens the form is located in the center right of the
+contents of the page */
+@media only screen and (min-width: 501px) {
+  #fields-sub {
+    float: right;
+  }
+}
+
+/* Styles the image upload section of the form. This contains
+text, a picture and a upload file input element. The section
+is positioned to the left of the text entry fields */
+#upload-img {
+  padding-top: 10px;
+  padding-left: 20px;
+  float: left;
+  width: 250px;
+}
+/* on small devices, the upload image section is moved to be 
+above the text entry fields. */
+@media only screen and (max-width: 500px) {
+  #upload-img {
+    position: absolute;
+    float: left;
+    width: 58%;
+    margin-bottom: 180px;
+    padding: 0px 0px;
+    top: 50px;
+    font-size: 20px;
+  }
+}
+/* The text prompting users to upload an image */
+#upload-lbl {
+  display: block;
+  color: rgb(85, 85, 85);
+  text-align: center;
+  padding-bottom: 26px;
+  font-size: 30px;
+}
+/* on small screens the text is made smaller with
+respect to the rest of the form. */
+@media only screen and (max-width: 500px) {
+  #upload-lbl {
+    font-size: 110%;
+    font-weight: 100;
+    margin: 30px 0;
+    padding: 0px 0px;
+    width: 200px;
+  }
+}
+/* on small screens the image in the upload image section
+is hidden. */
+@media only screen and (max-width: 500px) {
+  #noimage {
+    display: none;
+  }
+}
+
+/* Styles the default upload file button */
+#spot-img {
+  padding-top: 15px;
+}
+/* on smaller screens the positioning of the button is modified */
+@media only screen and (max-width: 500px) {
+  #spot-img {
+    font-size: 80%;
+    font-weight: 100;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 25px;
+    width: 100px;
+  }
+}
+
+/***************** SEARCH PAGE *****************
+The following contains styling for elements that are
+specific to the search page of the website*/
+
+/* Styles the container that holds the main content for the 
+search page. This is one background image, titular text and
+a search form. Its contents are poisitioned absolutely with 
+respect to it */
+@media only screen and (min-width: 501px) {
+  #overlay-search {
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    margin-left: 70px;
+    margin-top: 80px;
+
+  }
+}
+
+/* Styles the main titular text that appears on the search
+page. */
+#overlay-text-search {
+  font-size: 80px;
+  font-weight: 900;
+  padding-bottom: 20px;
+  text-align: right;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  width: 350px;
+  top: 240px;
+  left: 600px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+/* On small screens moves the text to the top of the
+content and styles it so that it is always centered on the page */
+@media only screen and (max-width: 500px) {
+  #overlay-text-search {
+    color: rgb(56, 56, 56);
+    text-align: center;
+    top: 150px;
+    width: 70%;
+    left: 0px;
+    text-shadow: none;
+    border-bottom: none;
+    font-size: 40px;
+    padding: 0 15%;
+  }
+}
+
+/* Styles the search form. */
+#form-search {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 14px 13px 38px -15px rgba(0, 0, 0, 0.75);
+  padding: 40px 50px 40px 50px;
+  display: inline-block;
+  width: 360px;
+  height: 355px;
+}
+/* on small screens the form is left-aligned */
+@media only screen and (max-width: 500px) {
+  #form-search {
+    text-align: center;
+    position: absolute;
+    top: 350px;
+    left: 8%;
+    padding: 70px 50px 70px 50px;
+    margin-bottom: 200px;
+    height: 760px;
+    width: 200px;
+  }
+}
+
+/* Styles the button used to activate geolocation on the search page */
+#bylocation {
+  position: absolute;
+  background-color: rgb(149, 202, 106);
+  width: 90px;
+  padding: 25px 10px;
+  font-size: 12px;
+  top: 184px;
+  left: 160px;
+}
+/* on small screens modifies the location of the button slightly */
+@media only screen and (max-width: 500px) {
+  #bylocation {
+    top:275px;
+
+  }
+}
+
+/* changes the background color of the button when a user hovers over
+it to indicate that it is clickable. */
+#bylocation:hover {
+  background-color: rgb(170, 206, 141);
+}
+
+/* on small screens modifies the position and size of the search button slightly */
+@media only screen and (max-width: 500px) {
+  #searchbtn {
+    position: absolute;
+    top: 770px;
+    left:50px;
+    width: 200px;
+  
+  }
+}
+
+
+/***************** CHECKBOX *****************
+Styles custom radio buttons to select a rating/
+
+/* The default radio button style is made transparent and layed over the
+custom radio button */
+.radio-style input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* styles the radiobutton to be a transparent rectangle when
+not selected */
+.radiobutton {
+  position: absolute;
+  height: 25px;
+  width: 120px;
+  margin-left: 30px;
+  top: 2px;
+  left: 0px;
+}
+@media only screen and (max-width: 500px) {
+  /* adjusts the dimensions of the radiobutton */
+  .radiobutton {
+    height: 40px;
+    width: 140px;
+    left: 0px;
+    top: -6px;
+    margin-left: 0px;
+  }
+}
+
+/* adds a red border to radiobutton when a user hovers over it 
+to indicate that it is clickable */
+@media only screen and (min-width: 501px) {
+  .radio-style:hover input ~ .radiobutton {
+    border: 2px solid red;
+  }
+}
+
+/* adds a red border to radiobutton when a user clicks it 
+to indicate that it is selected */
+.radio-style input:checked ~ .radiobutton {
+  border: 1px solid red;
+}
+
+/* hides the radio button when it is not selected */
+.radiobutton:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Styles a container for the radio button. This is the area
+a user can click to trigger the radio button. It also contains
+the text that is displayed next to the radiobutton */
+.radio-style {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: tomato;
+  font-size: 22px;
+  margin-bottom: 12px;
+  padding-left: 35px;
+}
+@media only screen and (max-width: 500px) {
+  /* on smaller screens this is made bigger with respect to screen
+width. */
+  .radio-style {
+    font-size: 140%;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+  }
+}
+
+/* Styles the text located next to the radio button */
+#rate-lbl {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  font-size: 15px;
+}
+/* on smaller screens this is made bigger with respect to screen
+width. */
+@media only screen and (max-width: 500px) {
+  #rate-lbl {
+    font-size: 120%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+  }
+}
+
+/* Positions the div containing all the checkbox elements and labels */
+#rate {
+  position: absolute;
+  left: 260px;
+  top: 0;
+  margin-top: 40px;
+
+}
+/* on smaller screens modifies the position slightly */
+@media only screen and (max-width: 500px) {
+  #rate {
+    position: absolute;
+    left: 78px;
+    top: 400px;
+    margin-top: 40px;
+  
+  }
+}
+
+/***************** RESULTS PAGE *****************
+The following contains styling for elements that are
+specific to the results page of the website. The content
+includes one map and one table of results stacked vertically.*/
+
+/* Styles the map image so that it is the size of the
+wrapper in width but restrained in terms of height. The
+map can be scrolled within this constrained dimension. It is 
+posiioned at the top of the scrren. */
+#results-map {
+  overflow: scroll;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+
+  height: 400px;
+}
+/* On small screens makes the height of the map greater
+with respect to the screen height. */
+@media screen and (max-width: 500px) {
+  #results-map {
+    height: 50vh;
+  }
+}
+/* contrains width to be equal to the width of the wrapper */
+@media screen and (min-width: 501px) {
+  #results-map {
+    min-width: 1100px;
+  }
+}
+
+/* Styles the results so that it is the size of the
+wrapper in width but restrained in terms of height. The
+mresults table inside this container can be scrolled within this 
+constrained dimension. It is posiioned below the map. */
+#results {
+  overflow: scroll;
+
+  height: 300px;
+  margin-bottom: 100px;
+}
+/* On small screens makes the height of the map greater
+with respect to the screen height. */
+@media screen and (max-width: 500px) {
+  #results {
+    height: 50vh;
+  }
+}
+/* constrains width to be equal to the width of the wrapper */
+@media screen and (min-width: 501px) {
+  #results {
+    min-width: 1100px;
+  }
+}
+
+/* Fixes the table so it is displayed completly horizontally but scrolls
+vertically. */
+#results table {
+  border: 1px solid #ddd;
+  text-align: left;
+  border-collapse: collapse;
+  width: 100%;
+}
+/* adjusts the font size of the table so it
+is still displayed coompletly horizontally on small screens */
+@media screen and (max-width: 500px) {
+  #results table {
+    width: 100%;
+    overflow: scroll;
+    height: 500px;
+    font-size: 70%;
+  }
+}
+
+/* styles table data font */
+#results td {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+
+  padding: 15px;
+}
+/* adjusts the padding between columns of the table so it
+is still displayed compeletly horizontally on small screens */
+@media screen and (max-width: 500px) {
+  #results td {
+    padding: 10px;
+  }
+}
+
+/* styles table heading font */
+#results th {
+  border: 0px solid #ddd;
+  text-align: left;
+  color: rgb(71, 70, 70);
+  background-color: rgb(235, 235, 235);
+  padding: 15px;
+}
+
+/* Styles the addresses listed in the results so that users are more
+easily aware that these are clickable links */
+.results-option {
+  color: tomato;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Styles the addresses listed in the results on mouse hover so that users are more
+easily aware that these are clickable links */
+.results-option:hover {
+  color: tomato;
+  letter-spacing: 1px;
+}
+
+/***************** PARKING PAGE *****************
+The following contains styling for elements that are
+specific to the parking spot page of the website. This contains
+a summary of the spot, a map with the spot
+and a table of reviews.*/
+
+/* summary contains a picture and a description displayed inline. Positions the
+summary block to be located at the top of the content and spans the
+width of the wrapper */
+#summary {
+  box-sizing: border-box;
+  width: 1100px;
+  height: 375px;
+  border: 1px solid #ddd;
+}
+/* on smaller screens modifies summary blocks width to be smaller and 
+increases its height with respect to screen size */
+@media screen and (max-width: 500px) {
+  #summary {
+    position: relative;
+    width: 402px;
+    border: none;
+  }
+}
+
+/* The picture is anchored to the right side of summary block */
+#spot-picture {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  overflow: scroll;
+  float: right;
+}
+/* on smaller screens the picture is stacked ontop of the 
+description in the summary block*/
+@media screen and (max-width: 500px) {
+  #spot-picture {
+    width: 402px;
+    height: 300px;
+  }
+}
+
+/* The description is anchored to the left side of summary block. It 
+contains a user icon and text */
+#spot-description {
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding-top: 60px;
+  padding-right: 40px;
+  padding-left: 20px;
+}
+/* on smaller screens the description is stacked below the 
+picture in the summary block*/
+@media screen and (max-width: 500px) {
+  #spot-description {
+    width: 402px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Anchored to the left side of the description block, contains a 
+link to the user profile and a profile picture.  */
+#icon {
+  float: left;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: block;
+  height: 200px;
+  margin-bottom: 100px;
+}
+/* on small screens the icon becomes more tightly-wrapped inlin with 
+the text of the description block */
+@media screen and (max-width: 500px) {
+  #icon {
+    padding-right: 20px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+    height: auto;
+  }
+}
+
+#profile-picture {
+  width: 100px;
+}
+
+/* styles the price displayed as part of the description text */
+#spot-price {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+/* styles the user comment displayed as part of the description text */
+#user-comment {
+  padding: 10px 0px;
+}
+
+/* An image of a map located below the summary block. Width is made
+equal to the width of the wrapper */
+#spot-map {
+  width: 1100px;
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+/* on smaller screens modifies map width to be smaller and 
+increases its height with respect to screen size */
+@media screen and (max-width: 500px) {
+  #spot-map {
+    width: 402px;
+    height: 300px;
+  }
+}
+
+/* Contains a table of review located below the map. Width is made
+equal to the width of the wrapper */
+#reviews {
+  box-sizing: border-box;
+  margin-bottom: 100px;
+}
+
+/* styles the table of reviews. Width is made equal to the width of the 
+wrapper */
+#reviews table {
+  border: 1px solid #ddd;
+  text-align: left;
+  border-collapse: collapse;
+  width: 1100px;
+}
+/* on smaller screens modifies table width to be smaller. */
+@media screen and (max-width: 500px) {
+  #reviews table {
+    width: 402px;
+  }
+}
+
+/* styles table data font */
+#reviews td {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  padding: 20px 40px;
+}
+/* adjusts the padding between columns of the table so it
+is still displayed compeletly horizontally on small screens */
+@media screen and (max-width: 500px) {
+  #reviews td {
+    padding: 40px 10px;
+    font-size: 70%;
+  }
+}
+
+/* styles table heading font */
+#reviews th {
+  border: 1px solid #ddd;
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+  font-size: 25px;
+  padding: 40px 0px;
+}
+
+/* Styles the star rating displayed in the reviews table */
+.star {
+  color: tomato;
+  font-size: 22px;
+}
+
+/* create a custom font-style */
+.subtitle {
+  font-weight: 500;
+  font-size: 20px;
+}
+/* adjust font style so that text is bigger on smaller screens */
+@media screen and (max-width: 500px) {
+  .subtitle {
+    font-size: 200%;
+  }
+}
+
+/* Styles the text displaying a username so that users are more
+easily aware that these are clickable links */
+.user {
+  text-decoration: underline;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+/* increases font size on smaller screens */
+@media screen and (max-width: 500px) {
+  .user {
+    font-size: 120%;
+  }
+}
+
+/* Styles username on mouse hover so that users are more
+easily aware that these are clickable links */
+.user:hover {
+  color: tomato;
+  letter-spacing: 0.5px;
+}
+
+/* create a custom font-style */
+.comment {
+  padding: 10px 0px;
+}
+/* adjust font style so that text is bigger on smaller screens */
+@media screen and (max-width: 500px) {
+  .comment {
+    font-size: 200%;
+  }
+}
+
+
+
+

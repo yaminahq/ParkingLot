@@ -1,0 +1,125 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Parking Spot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="websitestyle.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,500,700,900" rel="stylesheet" />
+    <script type="text/javascript" src="myscript.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <!-- wrapper used to center everything on the page-->
+    <div id="wrapper">
+
+        <!-- Header contains webiste title and sidebar toggle -->
+        <div id="header">
+
+            <a href="#" id="website-title">Parking lot</a>
+
+            <!-- default checkbox is used to create custom toggle button -->
+            <div id="sidebar">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <!-- The navigation menu contained in the sidebar -->
+                <ul id="menu">
+                    <li><a href="#" class="menu-category">Home</a></li>
+                    <li><a href="search.html" class="menu-category">Search</a></li>
+                    <li><a href="submission.html" class="menu-category">Submission</a></li>
+                    <li><a href="register.html" class="menu-category">Register</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content contains a summary of the parking spot, a map and a table of reviews -->
+        <div id="content">
+
+            <!-- summary contains a picture of the spot, and a description of the spot -->
+            <div id="summary">
+                <div id="spot-picture">
+                    <img src="images/parkingspot1.jpg" alt="A parking spot">
+                </div>
+
+                <!-- description of the spot contains a user icon and text -->
+                <div id="spot-description">
+                    <div id="icon">
+                        <img src="images/profileicon.png" alt="A anonymous user icon" id="profile-picture">
+                        <p class="user">Matt167</p>
+                    </div>
+                    <div>
+                        <div class="subtitle">123 Khan Crescent, Mississauaga</div>
+                        <div id="spot-price">$5.00/hour</div>
+                        <div id="user-comment">This space is about a 10 minute drive from UTM. Its a clean and safe
+                            area. Price is the lowest you can get. Text (647) 455-6787 if you're interested, no calls.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- contains an embeded live map -->
+            <div id="spot-map">
+                <!-- retrieves and creates a map using the Google Maps API and the function mySpotMap() defined in myscript.js-->
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD84ArCO3HWekkCN7ul18FBJDTIgu3MVNg&callback=mySpotMap"></script>
+            </div>
+            <div id="reviews">
+                <table>
+
+                    <!-- the table has a single heading which is the title of the table -->
+                    <tr>
+                        <th colspan="2">Ratings and Reviews</th>
+                    </tr>
+
+                    <!-- table data -->
+                    <tr>
+                        <td class="star">★★★★★</td>
+                        <td>
+                            <div class="subtitle">Wonderful Experience!</div>
+                            <div class="comment">Price is super competetive compared to other spots in this area and
+                                Matt was a pleasure to talk to. No complaints! </div>
+                            <div class="user">driver45637</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="star">★★★★★</td>
+                        <td>
+                            <div class="subtitle">yayy</div>
+                            <div class="comment">I'm glad I found this spot. I'm paying half of what my friends are
+                                paying for campus parking :))) </div>
+                            <div class="user">stephanie67</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="star">★★★★☆</td>
+                        <td>
+                            <div class="subtitle">I like it</div>
+                            <div class="comment">The price is gud . Too m uch far walk </div>
+                            <div class="user">Abdul-Samad4</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="star">★☆☆☆☆</td>
+                        <td>
+                            <div class="subtitle">Very Disappointed!</div>
+                            <div class="comment">I was initially really happy to find this parking space as the price
+                                was a steal but when I arrived to the location I realized it was smaller than in the
+                                picture and my car would be a tight fit. I didn't really have any other options though
+                                and I had already paid so I went ahead with the space. However, when I came back to
+                                drive home I noticed a scratch on my car that hadn't been there before! I tried
+                                contacting Matt but he hasn't returned any of my calls, would not recommend!!! </div>
+                            <div class="user">33Brenda6</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- footer contains links to more information about the site -->
+        <div id="footer">
+            <a href="#" class="footer-category">About</a>
+            <a href="#" class="footer-category">Sitemap</a>
+        </div>
+    </div>
+</body>
